@@ -17,15 +17,13 @@ namespace AluguelDeCarros
             builder.Services.AddAuthentication("Bearer").AddJwtBearer();
 
             builder.Services.AddControllers();
+            builder.Services.AddRazorPages();
 
             var connectionString = builder.Configuration.GetConnectionString("Default");
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
-            builder.Services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = true)
-                            .AddEntityFrameworkStores<AppDbContext>();
 
-            builder.Services.AddRazorPages();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -42,7 +40,6 @@ namespace AluguelDeCarros
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

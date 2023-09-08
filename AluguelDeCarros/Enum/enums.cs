@@ -14,4 +14,12 @@
         Renault,
 
     }
+
+
+    public enum Roles
+    {
+        None = 0,
+        Cliente,
+        Admin
+    }
 }

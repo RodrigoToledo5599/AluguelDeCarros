@@ -1,0 +1,32 @@
+﻿/*
+
+USE [AluguelDeCarros]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [dbo].[AutoSetClienteRole] ON [dbo].[Usuario]
+
+AFTER INSERT
+AS
+BEGIN
+    UPDATE Usuario
+    SET Role = 0
+    WHERE Role IS NULL
+    PRINT 'Role setted to 0';
+END
+
+
+
+
+
+
+
+
+
+
+
+*/

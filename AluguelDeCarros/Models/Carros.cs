@@ -7,7 +7,7 @@ namespace AluguelDeCarros.Models
     public class Carros
     {
 
-        [Required]
+        [Key]
         public int Id { get; set; }
 
 
@@ -18,6 +18,9 @@ namespace AluguelDeCarros.Models
         
         [Required]
         public Brand Marca { get; set; }
+
+
+
 
 
 

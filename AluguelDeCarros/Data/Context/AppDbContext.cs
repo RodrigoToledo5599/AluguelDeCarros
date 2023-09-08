@@ -1,10 +1,9 @@
 ﻿using AluguelDeCarros.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AluguelDeCarros.Data.Context
 {
-    public class AppDbContext : IdentityDbContext<Usuario>
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { } 
 
@@ -17,7 +16,12 @@ namespace AluguelDeCarros.Data.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Usuario>().HasData(
+                new Usuario { Id = 1, Name="Rodrigo",Email= "ddd@gmail.com" }
+                
+                    
 
+                );
 
 
 
