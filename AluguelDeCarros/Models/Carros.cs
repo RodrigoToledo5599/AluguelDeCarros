@@ -10,17 +10,17 @@ namespace AluguelDeCarros.Models
         [Key]
         public int Id { get; set; }
 
-
         [Required]
         [StringLength(127)]
-        public string Name { get; set; }
-        
+        public string Name { get; set; }        
         
         [Required]
         public Brand Marca { get; set; }
 
+        public bool Alugado { get; set; }
 
-
+        [Required]
+        public int ValorDia { get; set; }
 
 
 

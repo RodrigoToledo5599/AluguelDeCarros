@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.14" />
     <PackageReference Include="Microsoft.VisualStudio.Text.UI" Version="17.7.188" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
@@ -23,9 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\DTO\" />
+    <Folder Include="Data\DTO\Carros\" />
+    <Folder Include="Data\Migrations\" />
     <Folder Include="FRONT-END\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

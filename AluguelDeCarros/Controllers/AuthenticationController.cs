@@ -1,4 +1,5 @@
 ﻿using AluguelDeCarros.Data.Context;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AluguelDeCarros.Controllers
@@ -13,10 +14,12 @@ namespace AluguelDeCarros.Controllers
             _db = db;
         }
 
-        [HttpGet("gg")]
+
+        //[Authorize(Policy ="222")]
+        [HttpGet]
         public IActionResult Autenticar()
         {
-            return Ok("Identity é uma merda, VTNC");
+            return Ok("dddd");
         }
     }
 }

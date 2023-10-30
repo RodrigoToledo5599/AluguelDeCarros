@@ -16,7 +16,7 @@ BEGIN
     UPDATE Usuario
     SET Role = 0
     WHERE Role IS NULL
-    PRINT 'Role setted to 0';
+    PRINT 'Role setted to 1';
 END
 
 
