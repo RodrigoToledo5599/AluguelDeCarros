@@ -1,33 +1,65 @@
 ﻿using AluguelDeCarros.Data.Context;
+using AluguelDeCarros.Data.DTO.Carros;
+using AluguelDeCarros.Data.Repo;
 using AluguelDeCarros.Data.Repo.IRepo;
 using AluguelDeCarros.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Extensions;
 
 namespace AluguelDeCarros.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class MainPageController : ControllerBase
     {
-        //private readonly AppDbContext _db;
-        private readonly ICarrosRepository _carRepo;
-        public MainPageController(ICarrosRepository db)
+        private readonly IUnitOfWork _db;
+        private readonly IMapper _mapper;
+        public MainPageController(IUnitOfWork db, IMapper mapper)
         {
-            _carRepo = db;
+            _db = db;
+            _mapper = mapper;
         }
 
 
-        [HttpGet]
-        public IActionResult ListCars()
+        /// <summary>
+        /// Retorna todos os Carros
+        /// </summary>
+        /// <returns></returns>
+
+        [HttpGet("GetAllCars")]
+        public async Task<IActionResult> ListCars()
         {
-            var listaDeCarros = _carRepo.GetAll();
-            return Ok(listaDeCarros);
+            var listaDeCarros = await _db.Carros.GetAll();
+            List<CarrosDto> CarrosRemap = new List<CarrosDto>();
+
+            foreach (var car in listaDeCarros)
+            {
+                var carroRemapAtual = _mapper.Map<CarrosDto>(car);
+                CarrosRemap.Add(carroRemapAtual);
+            }
+            return Ok(CarrosRemap);
         }
-        
-        [HttpGet("{id}",Name="ReturnCarById")]
-        public IActionResult GetCarById(int id) 
+
+        [HttpGet("GetSomeOfTheCars")]
+        public async Task<IActionResult> ListCars(int inicio, int fim)
         {
-            Carros carro = _carRepo.GetById(c => c.Id ==  id);
+            var listaDeCarros = await _db.Carros.GetIntervalo(inicio,fim);
+            List<CarrosDto> CarrosRemap = new List<CarrosDto>();
+
+            foreach (var car in listaDeCarros)
+            {
+                var carroRemapAtual = _mapper.Map<CarrosDto>(car);
+                CarrosRemap.Add(carroRemapAtual);
+            }
+            return Ok(CarrosRemap);
+        }
+
+        [HttpGet("ReturnCarById")]
+        public async Task<IActionResult> GetCarById(int id) 
+        {
+
+            Carros carro = await _db.Carros.GetById(c => c.Id == id);
             return Ok(carro);
         }
         

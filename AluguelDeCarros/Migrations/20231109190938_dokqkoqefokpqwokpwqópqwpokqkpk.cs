@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AluguelDeCarros.Migrations
 {
-    public partial class FirstOne : Migration
+    public partial class dokqkoqefokpqwokpwqópqwpokqkpk : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,7 @@ namespace AluguelDeCarros.Migrations
                 name: "Usuario",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(127)", maxLength: 127, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(127)", maxLength: 127, nullable: false),
                     Senha = table.Column<string>(type: "nvarchar(127)", maxLength: 127, nullable: false),
@@ -36,7 +35,7 @@ namespace AluguelDeCarros.Migrations
                     Marca = table.Column<int>(type: "int", nullable: false),
                     Alugado = table.Column<bool>(type: "bit", nullable: false),
                     ValorDia = table.Column<int>(type: "int", nullable: false),
-                    UsuarioId = table.Column<int>(type: "int", nullable: true)
+                    UsuarioId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -55,7 +54,7 @@ namespace AluguelDeCarros.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CarroId = table.Column<int>(type: "int", nullable: false),
-                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    UsuarioId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CarroPego = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataDeEntrega = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Finalizado = table.Column<bool>(type: "bit", nullable: false)
@@ -105,8 +104,8 @@ namespace AluguelDeCarros.Migrations
                 columns: new[] { "Id", "Cpf", "Email", "Name", "Role", "Senha" },
                 values: new object[,]
                 {
-                    { 1, null, "ddd@gmail.com", "Rodrigo", null, "123" },
-                    { 2, null, "adm@gmail.com", "Adm", 2, "123" }
+                    { "990287d0-bbc8-4cf8-8216-7ad67c0d3ad6", null, "adm@gmail.com", "Adm", 2, "123" },
+                    { "f5d58797-e050-4a7a-9e6b-7842b10f589c", null, "ddd@gmail.com", "Rodrigo", null, "123" }
                 });
 
             migrationBuilder.CreateIndex(

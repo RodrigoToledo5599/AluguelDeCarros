@@ -1,5 +1,6 @@
 ﻿using AluguelDeCarros.Data.Context;
 using AluguelDeCarros.Data.Repo.IRepo;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace AluguelDeCarros.Data.Repo
@@ -25,16 +26,24 @@ namespace AluguelDeCarros.Data.Repo
             return entity;
         }
 
-        IEnumerable<T> IRepository<T>.GetAll()
+        async Task<IEnumerable<T>> IRepository<T>.GetAll()
         {
-            IEnumerable<T> list = _db.Set<T>().ToList();
+            IEnumerable<T> list = await _db.Set<T>().ToListAsync();
             return list;
 
         }
 
-        T IRepository<T>.GetById(Expression<Func<T, bool>> filter)
+        async Task<IEnumerable<T>> IRepository<T>.GetIntervalo(int inicio, int QuantidadeDeElementos)
         {
-            T register = _db.Set<T>().Where(filter).FirstOrDefault();
+            IEnumerable<T> list = await _db.Set<T>().Skip(inicio).Take(QuantidadeDeElementos - inicio).ToListAsync();
+            return list;
+
+        }
+
+
+        async Task<T> IRepository<T>.GetById(Expression<Func<T, bool>> filter)
+        {
+            T register = await _db.Set<T>().Where(filter).FirstOrDefaultAsync();
             return register;
         }
 

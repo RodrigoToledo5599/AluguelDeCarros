@@ -9,7 +9,7 @@ namespace AluguelDeCarros.Models
     public class Usuario 
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
         
         [Required]
         [StringLength(127)]

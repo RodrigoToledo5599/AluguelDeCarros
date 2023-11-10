@@ -18,8 +18,8 @@ namespace AluguelDeCarros.Data.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Usuario>().HasData(
-                new Usuario { Id = 1, Name="Rodrigo",Email= "ddd@gmail.com",Senha= "123" },
-                new Usuario { Id = 2, Name="Adm",Email= "adm@gmail.com", Senha= "123", Role = Enum.Roles.Admin }
+                new Usuario { Id = Guid.NewGuid().ToString(), Name="Rodrigo",Email= "ddd@gmail.com",Senha= "123" },
+                new Usuario { Id = Guid.NewGuid().ToString(), Name="Adm",Email= "adm@gmail.com", Senha= "123", Role = Enum.Roles.Admin }
                 
                     
 

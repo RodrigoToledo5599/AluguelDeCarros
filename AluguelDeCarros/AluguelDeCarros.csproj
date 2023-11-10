@@ -11,6 +11,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.14" />
+    
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+    
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Text.UI" Version="17.7.188" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	  <PackageReference Include="AutoMapper" Version="12.0.0" />
@@ -26,9 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\DTO\Carros\" />
-    <Folder Include="Data\Migrations\" />
     <Folder Include="FRONT-END\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

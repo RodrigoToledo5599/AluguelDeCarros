@@ -42,8 +42,9 @@ namespace AluguelDeCarros.Migrations
                     b.Property<bool>("Finalizado")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -73,8 +74,8 @@ namespace AluguelDeCarros.Migrations
                         .HasMaxLength(127)
                         .HasColumnType("nvarchar(127)");
 
-                    b.Property<int?>("UsuarioId")
-                        .HasColumnType("int");
+                    b.Property<string>("UsuarioId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ValorDia")
                         .HasColumnType("int");
@@ -218,11 +219,8 @@ namespace AluguelDeCarros.Migrations
 
             modelBuilder.Entity("AluguelDeCarros.Models.Usuario", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Cpf")
                         .HasMaxLength(11)
@@ -253,14 +251,14 @@ namespace AluguelDeCarros.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = "f5d58797-e050-4a7a-9e6b-7842b10f589c",
                             Email = "ddd@gmail.com",
                             Name = "Rodrigo",
                             Senha = "123"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = "990287d0-bbc8-4cf8-8216-7ad67c0d3ad6",
                             Email = "adm@gmail.com",
                             Name = "Adm",
                             Role = 2,

@@ -15,7 +15,7 @@ namespace AluguelDeCarros.Controllers
         }
 
 
-        //[Authorize(Policy ="222")]
+        
         [HttpGet]
         public IActionResult Autenticar()
         {

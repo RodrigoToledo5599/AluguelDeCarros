@@ -24,10 +24,10 @@ namespace AluguelDeCarros.Services.Token
                 new Claim("loginTimestamp", DateTime.UtcNow.ToString())
             };
 
-            var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SymmetricSecurityKey"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
 
             var signingCredentials =
-                new SigningCredentials(chave, SecurityAlgorithms.HmacSha256);
+                new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken
                 (

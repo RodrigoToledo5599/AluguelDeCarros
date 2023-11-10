@@ -18,7 +18,7 @@ namespace AluguelDeCarros.Models
 
 
         [Required]
-        public int UsuarioId { get; set; }
+        public string UsuarioId { get; set; }
 
         [ForeignKey("UsuarioId")]
         public Usuario Usuario { get; set; }
