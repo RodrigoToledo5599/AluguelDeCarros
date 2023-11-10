@@ -31,6 +31,7 @@ namespace AluguelDeCarros.Controllers
         public async Task<IActionResult> ListCars()
         {
             var listaDeCarros = await _db.Carros.GetAll();
+            /*
             List<CarrosDto> CarrosRemap = new List<CarrosDto>();
 
             foreach (var car in listaDeCarros)
@@ -39,6 +40,8 @@ namespace AluguelDeCarros.Controllers
                 CarrosRemap.Add(carroRemapAtual);
             }
             return Ok(CarrosRemap);
+            */
+            return Ok(listaDeCarros);
         }
 
         [HttpGet("GetSomeOfTheCars")]

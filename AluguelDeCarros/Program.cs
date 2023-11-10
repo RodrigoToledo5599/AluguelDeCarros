@@ -71,7 +71,11 @@ namespace AluguelDeCarros
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors(builder => builder
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+    );
             app.UseAuthorization();
 
             app.MapControllers();
