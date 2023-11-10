@@ -8,10 +8,10 @@ import axios from 'axios';
 
 
 
-export default function TryingToFetchData() {
-    
+export default function TryingToFetchData({idCarro}) {
+  var url = BASE_URL;
   useEffect(() => {
-    axios.get('https://localhost:7136/api/MainPage/ReturnCarById?id=5')
+    api.get(BASE_URL+'api/MainPage/ReturnCarById?id='+`${idCarro}`)
       .then(resposta =>{
         console.log(resposta.data)
       })

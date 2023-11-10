@@ -10,7 +10,7 @@ export default function Home() {
     <main>
     
       <h1>Carro:</h1>
-      <TFD></TFD>
+      <TFD idCarro={8}></TFD>
     </main>
   )
 }
