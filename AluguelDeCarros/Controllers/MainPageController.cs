@@ -43,7 +43,7 @@ namespace AluguelDeCarros.Controllers
             */
             return Ok(listaDeCarros);
         }
-
+        
         [HttpGet("GetSomeOfTheCars")]
         public async Task<IActionResult> ListCars(int inicio, int fim)
         {
