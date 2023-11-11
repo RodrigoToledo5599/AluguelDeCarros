@@ -1,5 +1,5 @@
 import Header from './components/Header/Header'
-import TFD from './components/TryingToFetchData/TryingToFetchData'
+import Car from './components/CarOnMainMenu/CarOnMainMenu'
 import { Box, Container, Flex, SimpleGrid } from "@chakra-ui/layout";
 import React from "react";
 import Link from "next/link";
@@ -16,7 +16,7 @@ export default function Home() {
     <body>
       <Header></Header>
       <div>
-        <TFD idCarro={9} ></TFD>
+        <Car id={9}></Car>
       </div>
     </body>
   )
