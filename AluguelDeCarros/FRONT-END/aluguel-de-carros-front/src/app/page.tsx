@@ -8,9 +8,9 @@ import { Button } from "@chakra-ui/react";
 export default function Home() {
   return (
     <main>
-    
+      <Header></Header>
       <h1>Carro:</h1>
-      <TFD idCarro={8}></TFD>
+      <TFD idCarro={11}></TFD>
     </main>
   )
 }

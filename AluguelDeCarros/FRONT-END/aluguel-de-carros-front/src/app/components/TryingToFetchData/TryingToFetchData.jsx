@@ -21,7 +21,7 @@ export default function TryingToFetchData({idCarro}) {
     return (
       <div>
        
-        <p>data.marca</p>
+        <p>resposta.data.name</p>
       </div>
     )
   }
