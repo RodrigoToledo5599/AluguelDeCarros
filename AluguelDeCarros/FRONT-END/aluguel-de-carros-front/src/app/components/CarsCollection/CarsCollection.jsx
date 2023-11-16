@@ -9,10 +9,14 @@ import React from 'react';
 
 
 
-function CarsCollection (){
-    const url = BASE_URL+'api/MainPage/GetAllCars';
-    const [cars,setCars] = useState([]);
+function CarsCollection (props){
+    var comeco;
+    var fim;
+    var {comeco , fim} = props
 
+
+    const url = BASE_URL+'api/MainPage/GetSomeOfTheCars?inicio='+`${comeco}`+'&fim='+`${fim}`;
+    const [cars,setCars] = useState([]);
 
     useEffect(()=>{
         api.get(url)
@@ -27,9 +31,6 @@ function CarsCollection (){
         {cars.map( car =>(
             <div key={car.id} className='carMenu'>
                 <table>
-                    <tr>
-                        {car.id}    
-                    </tr>
 
                     <tr>
                         {car.name}
@@ -47,10 +48,7 @@ function CarsCollection (){
             </div>
         ))}
         </>
-
-
     )
-
 }
 
 export default CarsCollection;

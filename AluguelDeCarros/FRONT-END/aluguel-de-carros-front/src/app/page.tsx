@@ -17,10 +17,9 @@ export default function Home() {
   return (
     <body>
       <Header></Header>
+
         <div className='page-Content'>
-          
-          <CarsCollection></CarsCollection>
-          
+          <CarsCollection comeco= {3} fim={10}></CarsCollection>
           
         </div>
     </body>

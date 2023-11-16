@@ -32,6 +32,9 @@ namespace AluguelDeCarros.Controllers
         {
             var listaDeCarros = await _db.Carros.GetAll();
             /*
+            */
+            // tirando o id do carro (por enquanto deixarei comentado pq a api nao funciona com essa parte no codigo)
+
             List<CarrosDto> CarrosRemap = new List<CarrosDto>();
 
             foreach (var car in listaDeCarros)
@@ -39,8 +42,7 @@ namespace AluguelDeCarros.Controllers
                 var carroRemapAtual = _mapper.Map<CarrosDto>(car);
                 CarrosRemap.Add(carroRemapAtual);
             }
-            return Ok(CarrosRemap);
-            */
+            //return Ok(CarrosRemap);
             return Ok(listaDeCarros);
         }
         
