@@ -1,5 +1,4 @@
 import Header from './components/Header/Header'
-import Car from './components/CarOnMainMenu/CarOnMainMenu'
 import { Box, Container, Flex, SimpleGrid } from "@chakra-ui/layout";
 import React from "react";
 import Link from "next/link";

@@ -6,9 +6,27 @@
     justify-content:left;
     border: solid white 2px;
     border-radius: 7px;
-    padding-left: 10%;
     width: 90%;
     height:150px;
     margin: 10px
 
+}
+
+.carMenu:hover{
+    background-color: rgb(201, 42, 42);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.pictureSpace{
+    border: solid 1px white;
+    margin: 5px;
+    height:135px;
+    width:20%;
+}
+
+
+.carInfo{
+    padding-left: 10px;
+    padding-top: 1%;
 }

@@ -1,7 +1,7 @@
 'use client'
 import {useEffect,useState} from 'react';
 import { BASE_URL, api } from "../../../api"
-import {Car} from './../CarOnMainMenu/CarOnMainMenu'
+
 
 import './CarsCollection.css'
 import React from 'react';
@@ -30,20 +30,26 @@ function CarsCollection (props){
         <>
         {cars.map( car =>(
             <div key={car.id} className='carMenu'>
-                <table>
+                <div className='pictureSpace'>
+                    <p>espaço reservado futuramente para as imagens</p>
+                </div>
+                <div className='carInfo'>
 
-                    <tr>
-                        {car.name}
-                    </tr>
+                    <table>
 
-                    <tr>
-                        {car.marca}
-                    </tr>
-                    <tr>
-                        {car.valorDia}
-                    </tr>
-                
-                </table>
+                        <tr>
+                            {car.name}
+                        </tr>
+
+                        <tr>
+                            {car.marca}
+                        </tr>
+                        <tr>
+                            {car.valorDia}
+                        </tr>
+                    
+                    </table>
+                </div>
                 
             </div>
         ))}
