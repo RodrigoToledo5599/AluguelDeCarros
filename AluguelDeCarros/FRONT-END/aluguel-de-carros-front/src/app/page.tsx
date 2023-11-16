@@ -4,6 +4,8 @@ import { Box, Container, Flex, SimpleGrid } from "@chakra-ui/layout";
 import React from "react";
 import Link from "next/link";
 import { Button } from "@chakra-ui/react";
+import CarsCollection from './components/CarsCollection/CarsCollection';
+
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import './page.css'
@@ -15,9 +17,12 @@ export default function Home() {
   return (
     <body>
       <Header></Header>
-      <div>
-        <Car id={9}></Car>
-      </div>
+        <div className='page-Content'>
+          
+          <CarsCollection></CarsCollection>
+          
+          
+        </div>
     </body>
   )
 }

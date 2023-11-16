@@ -1,52 +1,56 @@
+
 'use client'
 import {useEffect,useState} from 'react';
 import { BASE_URL, api } from "../../../api"
+import React from 'react';
+
+import './CarOnMainMenu.css'
 
 type Carro = {
   id: number;
   name: string;
   marca: number;
   alugado: boolean;
-  valordia: number
+  valorDia: number;
 
+}
+
+
+type whatever ={
+  text: string;
 }
 
 
 
 
+export default function CarOnMainMenu({id} : Carro,) {
 
-export default function CarOnMainMenu({id} : Carro) {
-
-  const [cars , setCars] = useState<Carro>();
+  const [car , setCar] = useState<Carro>();
 
   useEffect(() => {
     api.get(BASE_URL+'api/MainPage/ReturnCarById?id='+`${id}`)
       .then(resposta =>{
-        setCars(resposta.data)
+        setCar(resposta.data)
       })
-  }, [])
+  },)
 
+  var Textin = "";
+  
 
-  const checkAlugado = async () =>
-  {
-    if(cars?.alugado == false){
-      return(
-        <p>livre</p>
-      )
-    }
-    else{
-      <p>alugado</p>
-    }
-  }
-
-
-    return (
-      <div>
+  return (
+    <div key={car?.id} className='CarIcon'>
+      <a href=''>
+        <div className='CarInfo'>
+          
+          {car?.name}<br/>
+          {car?.marca}<br/>
+          {car?.valorDia}<br/>
+        </div>
         
-        <p>{cars?.name}</p>
-        <p>{cars?.marca}</p>
-        {checkAlugado()}
-        <p>{cars?.name}</p>
+
+      </a>
       </div>
-    )
-  }
+      
+      
+  )
+}

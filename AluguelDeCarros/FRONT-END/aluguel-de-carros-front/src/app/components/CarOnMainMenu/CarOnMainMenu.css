@@ -1,0 +1,27 @@
+body{
+    width:100%;
+    height:100%;
+}
+
+
+
+
+.CarIcon{
+    
+    
+    border: solid white 2px;
+    width:10%;
+    border-radius: 7px;
+    height: 15%;
+    display:flex;
+    justify-content: center;
+
+
+
+}
+
+
+.CarInfo{
+    padding:18px
+    
+}
