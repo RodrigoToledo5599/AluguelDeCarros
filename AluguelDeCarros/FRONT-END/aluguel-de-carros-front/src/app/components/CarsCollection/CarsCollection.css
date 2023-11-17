@@ -8,10 +8,10 @@
     border: solid black 2px;
     */
     box-shadow: 2px 2px 2px 2px rgb(121, 107, 94);
-    border-radius: 7px;
+    border-radius: 10px;
     width: 90%;
     height:170px;
-    margin: 10px
+    margin: 10px;
 
 }
 
@@ -19,6 +19,7 @@
     box-shadow: 3px 3px 2px 2px rgb(0,0,0);
     cursor: pointer;
     transition: 0.4s;
+    
 }
 
 .pictureSpace{
@@ -46,6 +47,7 @@
 .alugarButton:hover{
     background-color: #fda172;
     transition-duration: 0.4s;
-    
+    transform:rotate(-0.06125turn);
+    transition-duration: 0.5s;
 
 }
