@@ -4,6 +4,7 @@ using AluguelDeCarros.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AluguelDeCarros.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231117175203_adding-DmMarcas-Table")]
+    partial class addingDmMarcasTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -348,14 +350,14 @@ namespace AluguelDeCarros.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "525788ef-77ef-4f60-b104-bb9c03096829",
+                            Id = "15dcb50c-9085-486f-81b5-7563a147c122",
                             Email = "ddd@gmail.com",
                             Name = "Rodrigo",
                             Senha = "123"
                         },
                         new
                         {
-                            Id = "67ed01d1-0032-4587-93c6-2d083329384f",
+                            Id = "1735f7c1-561c-4486-b0cf-499133a823e6",
                             Email = "adm@gmail.com",
                             Name = "Adm",
                             Role = 2,

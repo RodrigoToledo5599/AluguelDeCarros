@@ -13,7 +13,7 @@ namespace AluguelDeCarros.Controllers
     [Route("api/[controller]")]
     public class MainPageController : ControllerBase
     {
-        private readonly IUnitOfWork _db;
+        public readonly IUnitOfWork _db;
         private readonly IMapper _mapper;
         public MainPageController(IUnitOfWork db, IMapper mapper)
         {
@@ -31,9 +31,7 @@ namespace AluguelDeCarros.Controllers
         public async Task<IActionResult> ListCars()
         {
             var listaDeCarros = await _db.Carros.GetAll();
-            /*
-            */
-            // tirando o id do carro (por enquanto deixarei comentado pq a api nao funciona com essa parte no codigo)
+            
 
             List<CarrosDto> CarrosRemap = new List<CarrosDto>();
 
@@ -42,8 +40,9 @@ namespace AluguelDeCarros.Controllers
                 var carroRemapAtual = _mapper.Map<CarrosDto>(car);
                 CarrosRemap.Add(carroRemapAtual);
             }
-            //return Ok(CarrosRemap);
-            return Ok(listaDeCarros);
+            return Ok(CarrosRemap);
+            
+            
         }
         
         [HttpGet("GetSomeOfTheCars")]
@@ -63,9 +62,36 @@ namespace AluguelDeCarros.Controllers
         [HttpGet("ReturnCarById")]
         public async Task<IActionResult> GetCarById(int id) 
         {
+            Carros carro  = new Carros();
+            CarrosDto result = new CarrosDto();
+            int idNumber = 0;
+            try
+            {
+                carro = await _db.Carros.GetById(c => c.Id == id);
+                result = _mapper.Map<CarrosDto>(carro);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Esse carro nao existe");
+            }
 
-            Carros carro = await _db.Carros.GetById(c => c.Id == id);
-            return Ok(carro);
+            idNumber = carro.Id;
+            
+            DmMarcas marca = new DmMarcas();
+
+
+            // nao sei pq mas o meu banco ainda nao deixou a categoria de marcas na table de carros como nao nullable, entao por enquanto essa validação abaixo nao serve pra nada.
+            try
+            {
+                marca = await _db.Marcas.getMarcaFromCarro(idNumber);
+                result.Marca = marca.Marca.ToString();
+            }
+            catch (Exception ex)
+            {
+                result.Marca = "";
+            }
+            
+            return Ok(result);
         }
         
 

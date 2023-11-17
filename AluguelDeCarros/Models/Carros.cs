@@ -14,21 +14,15 @@ namespace AluguelDeCarros.Models
         [StringLength(127)]
         public string Name { get; set; }        
         
-        [Required]
-        public Brand Marca { get; set; }
+        public int MarcaId { get; set; }
+        [ForeignKey("MarcaId")]
+        public DmMarcas DmMarcas { get; set; }
 
         public bool Alugado { get; set; }
 
         [Required]
         public int ValorDia { get; set; }
 
-
-
-
-        
-
     }
-
-
 
 }
