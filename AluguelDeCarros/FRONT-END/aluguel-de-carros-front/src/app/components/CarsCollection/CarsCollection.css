@@ -4,29 +4,33 @@
     
     display:flex;
     justify-content:left;
-    border: solid white 2px;
+    /*
+    border: solid black 2px;
+    */
+    box-shadow: 2px 2px 2px 2px rgb(121, 107, 94);
     border-radius: 7px;
     width: 90%;
-    height:150px;
+    height:170px;
     margin: 10px
 
 }
 
 .carMenu:hover{
-    background-color: rgb(201, 42, 42);
+    box-shadow: 3px 3px 2px 2px rgb(0,0,0);
     cursor: pointer;
     transition: 0.4s;
 }
 
 .pictureSpace{
-    border: solid 1px white;
-    margin: 5px;
-    height:135px;
-    width:20%;
+    border: solid 1px black;
+    margin-top: 15px;
+    margin-left: 15px;
+    height: 135px;
+    width: 20%;
 }
 
 
 .carInfo{
-    padding-left: 10px;
-    padding-top: 1%;
+    padding-left: 15px;
+    padding-top: 2%;
 }

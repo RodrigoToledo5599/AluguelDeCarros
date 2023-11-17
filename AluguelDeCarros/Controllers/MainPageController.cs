@@ -38,7 +38,12 @@ namespace AluguelDeCarros.Controllers
             foreach (var car in listaDeCarros)
             {
                 var carroRemapAtual = _mapper.Map<CarrosDto>(car);
+                int idNumber = car.Id;
+                DmMarcas marca = new DmMarcas();
+                marca = await _db.Marcas.getMarcaFromCarro(idNumber);
+                carroRemapAtual.Marca = marca.Marca.ToString();
                 CarrosRemap.Add(carroRemapAtual);
+
             }
             return Ok(CarrosRemap);
             
@@ -54,6 +59,10 @@ namespace AluguelDeCarros.Controllers
             foreach (var car in listaDeCarros)
             {
                 var carroRemapAtual = _mapper.Map<CarrosDto>(car);
+                int idNumber = car.Id;
+                DmMarcas marca = new DmMarcas();
+                marca = await _db.Marcas.getMarcaFromCarro(idNumber);
+                carroRemapAtual.Marca = marca.Marca.ToString();
                 CarrosRemap.Add(carroRemapAtual);
             }
             return Ok(CarrosRemap);
