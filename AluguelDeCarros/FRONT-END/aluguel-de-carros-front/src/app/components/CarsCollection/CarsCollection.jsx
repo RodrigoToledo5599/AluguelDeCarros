@@ -29,7 +29,7 @@ function CarsCollection (props){
     return(
         <>
         {cars.map( car =>(
-            <div key={car.id} className='carMenu'>
+            <div key={car.id} className='carIcon'>
                 <div className='pictureSpace'>
                     <p>espaço reservado futuramente para as imagens</p>
                 </div>
@@ -45,9 +45,14 @@ function CarsCollection (props){
                             {car.marca}
                         </tr>
                         <tr>
-                            {car.valorDia}
+                           R$ {car.valorDia}/dia
                         </tr>
-                    
+                        <tr>
+                            <button className='alugarButton'>
+                                <h1>ALUGAR</h1>
+                            </button>
+
+                        </tr>
                     </table>
                 </div>
                 

@@ -1,6 +1,6 @@
 
 
-.carMenu{
+.carIcon{
     
     display:flex;
     justify-content:left;
@@ -15,7 +15,7 @@
 
 }
 
-.carMenu:hover{
+.carIcon:hover{
     box-shadow: 3px 3px 2px 2px rgb(0,0,0);
     cursor: pointer;
     transition: 0.4s;
@@ -33,4 +33,19 @@
 .carInfo{
     padding-left: 15px;
     padding-top: 2%;
+    width: 35%;
+}
+
+.alugarButton{
+    border: solid 1px black;
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.alugarButton:hover{
+    background-color: #fda172;
+    transition-duration: 0.4s;
+    
+
 }
