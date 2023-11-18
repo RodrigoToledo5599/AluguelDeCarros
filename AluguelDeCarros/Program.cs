@@ -1,7 +1,9 @@
 using AluguelDeCarros.Data.Context;
 using AluguelDeCarros.Data.Repo;
 using AluguelDeCarros.Data.Repo.IRepo;
+using AluguelDeCarros.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -27,6 +29,11 @@ namespace AluguelDeCarros
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+
+            builder.Services.AddIdentity<Usuario, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             
             builder.Services.AddEndpointsApiExplorer();
@@ -42,16 +49,7 @@ namespace AluguelDeCarros
 
             builder.Services.AddControllers();
             builder.Services.AddRazorPages();
-            /*
-            builder.Services.AddAuthentication(
-                JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-
-                    }
-                );
-            */
+              
             
 
             var app = builder.Build();
@@ -76,8 +74,8 @@ namespace AluguelDeCarros
                 .AllowAnyMethod()
                 .AllowAnyOrigin()
     );
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.MapControllers();
 
             app.Run();

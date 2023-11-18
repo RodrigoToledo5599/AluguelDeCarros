@@ -101,9 +101,8 @@ namespace AluguelDeCarros.Controllers
             }
             
             return Ok(result);
-        }
         
-
-
+        
+        }
     }
 }

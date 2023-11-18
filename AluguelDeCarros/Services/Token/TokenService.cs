@@ -19,7 +19,7 @@ namespace AluguelDeCarros.Services.Token
         {
             Claim[] claims = new Claim[]
             {
-                new Claim("senha", usuario.Senha),
+    
                 new Claim("username", usuario.Email),
                 new Claim("loginTimestamp", DateTime.UtcNow.ToString())
             };
