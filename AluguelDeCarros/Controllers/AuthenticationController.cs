@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AluguelDeCarros.Controllers
 {
+    [Authorize(AuthenticationSchemes ="Bearer")]
     [ApiController]
     [Route("api/[controller]")]
     public class AuthenticationController : ControllerBase

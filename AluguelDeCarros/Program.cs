@@ -1,3 +1,4 @@
+using System.Text;
 using AluguelDeCarros.Data.Context;
 using AluguelDeCarros.Data.Repo;
 using AluguelDeCarros.Data.Repo.IRepo;
@@ -5,6 +6,7 @@ using AluguelDeCarros.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace AluguelDeCarros
@@ -33,6 +35,23 @@ namespace AluguelDeCarros
             builder.Services.AddIdentity<Usuario, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+
+            builder.Services.AddAuthentication(
+                JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                options.TokenValidationParameters = new TokenValidationParameters 
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidAudience = builder.Configuration["TokenConfig:Audience"],
+                    ValidIssuer = builder.Configuration["TokenConfig:Issuer"],
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(builder.Configuration["Jwt:key"]))
+                });
+
+
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             
