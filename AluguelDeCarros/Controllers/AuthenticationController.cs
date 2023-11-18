@@ -47,5 +47,28 @@ namespace AluguelDeCarros.Controllers
         }
 
 
+        [HttpGet("login")]
+        public async Task<ActionResult> Login([FromQuery] UsuarioSignIn model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values.SelectMany(e => e.Errors));
+            }
+
+            
+
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password,false,false);
+
+            if (!result.Succeeded)
+                return StatusCode(401,"Senha ou email estão errado(s) o sua mula");
+            else
+                return Ok("nice");
+            
+            
+
+
+        }
+
+
     }
 }
