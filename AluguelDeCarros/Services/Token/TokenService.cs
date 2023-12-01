@@ -9,33 +9,22 @@ namespace AluguelDeCarros.Services.Token
 {
     public class TokenService
     {
+        
         private IConfiguration _configuration;
-
+        protected JwtSecurityToken Token;
 
         public TokenService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        public UsuarioToken GenerateUsuarioToken(JwtSecurityToken token)
-        {
-            return new UsuarioToken()
-            {
-                Authenticated = true,
-                Token = new JwtSecurityTokenHandler().WriteToken(token),
-                Expiration = token.InnerToken.ValidTo,
-                Message = "Tokenzao pronto"
-
-            };
-        }
-
-
-        public string GenerateToken(Usuario usuario)
+        public JwtSecurityToken GenerateToken(string Email, string Senha)
         {
             Claim[] claims = new Claim[]
             {
     
-                new Claim("Email", usuario.Email),
+                new Claim("Email", Email),
+                new Claim("Senha", Senha),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -44,18 +33,37 @@ namespace AluguelDeCarros.Services.Token
             var signingCredentials =
                 new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-
-            var token = new JwtSecurityToken(
+            this.Token = new JwtSecurityToken(
                 issuer: _configuration["TokenConfig:Issuer"],
                 audience: _configuration["TokenConfig:Audience"],
                 expires: DateTime.Now.AddMinutes(double.Parse(_configuration["TokenConfig:ExpireMinutes"])),
                 claims: claims,
                 signingCredentials: signingCredentials
-                ) ;
+                );
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            
+            return this.Token;
+
+        }
+        public UsuarioToken GenerateUsuarioToken()
+        {
+            return new UsuarioToken()
+            {
+                Authenticated = true,
+                UserToken = new JwtSecurityTokenHandler().WriteToken(this.Token),
+                Expiration = Token.InnerToken.ValidTo,
+                Message = "Tokenzao pronto"
+            };
+        }
+
+
+
+        public string TokenString()
+        {
+            return new JwtSecurityTokenHandler().WriteToken(Token);
         }
     
+        
     }
 
 }

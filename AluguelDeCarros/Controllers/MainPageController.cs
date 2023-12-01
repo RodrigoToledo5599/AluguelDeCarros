@@ -4,6 +4,8 @@ using AluguelDeCarros.Data.Repo;
 using AluguelDeCarros.Data.Repo.IRepo;
 using AluguelDeCarros.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Extensions;
 
@@ -11,6 +13,7 @@ namespace AluguelDeCarros.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class MainPageController : ControllerBase
     {
         public readonly IUnitOfWork _db;
@@ -26,7 +29,7 @@ namespace AluguelDeCarros.Controllers
         /// Retorna todos os Carros
         /// </summary>
         /// <returns></returns>
-
+        //[Authorize(AuthenticationSchemes ="Bearer")]
         [HttpGet("GetAllCars")]
         public async Task<IActionResult> ListCars()
         {

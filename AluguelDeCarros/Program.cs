@@ -35,7 +35,8 @@ namespace AluguelDeCarros
             builder.Services.AddIdentity<Usuario, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
-
+            /*
+             */
             builder.Services.AddAuthentication(
                 JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
