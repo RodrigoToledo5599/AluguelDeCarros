@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/TryingToFetchData/TryingToFetchData.tsx", "src/app/components/CarsCollection/CarsCollection.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/TryingToFetchData/TryingToFetchData.tsx", "src/app/components/CarsCollection/CarsCollection.jsx", "src/pages/user/create-user.jsx"],
   "exclude": ["node_modules"]
 }
