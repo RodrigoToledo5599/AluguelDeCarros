@@ -33,8 +33,10 @@ const Header =() =>{
             <div className='spaceBetween'></div>
 
             <div className='main-header-options second'>
-                <Link href="/user/create-user/">
-                    <div className='header-button'><MdAccountCircle className='account-circle'></MdAccountCircle></div>
+                <Link href="user/create-user">
+                    <div className='header-button'>
+                        <MdAccountCircle className='account-circle'></MdAccountCircle>
+                    </div>
                 </Link>
                 <button className='header-button'>option 2</button>
                 <button className='header-button'>option 2</button>
