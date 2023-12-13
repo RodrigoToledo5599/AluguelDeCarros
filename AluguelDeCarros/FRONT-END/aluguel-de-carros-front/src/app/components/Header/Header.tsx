@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import { Box, Container, Flex, SimpleGrid } from "@chakra-ui/layout";
 import React from "react";
-import Link from "next/link";
-import { Button } from "@chakra-ui/react";
 import { MdAccountCircle } from "react-icons/md";
 
+
+import Link from 'next/link';
 
 
 
@@ -18,7 +18,7 @@ const Header =() =>{
 
             <div className='main-header-options primary'>
                 
-                <button className='header-button'>MAIN MENU</button>
+                <button className='header-button main-page'>Main Page</button>
                 <button className='header-button'>option 1</button>
                 <button className='header-button'>option 1</button>
                 <button className='header-button'>option 1</button>
@@ -33,7 +33,9 @@ const Header =() =>{
             <div className='spaceBetween'></div>
 
             <div className='main-header-options second'>
-                <button className='header-button'><MdAccountCircle className='account-circle'></MdAccountCircle></button>
+                <Link href="/user/create-user/">
+                    <div className='header-button'><MdAccountCircle className='account-circle'></MdAccountCircle></div>
+                </Link>
                 <button className='header-button'>option 2</button>
                 <button className='header-button'>option 2</button>
             </div>

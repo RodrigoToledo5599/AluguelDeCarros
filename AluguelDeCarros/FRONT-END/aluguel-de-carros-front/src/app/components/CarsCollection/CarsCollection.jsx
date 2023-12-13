@@ -1,7 +1,6 @@
 'use client'
 import {useEffect,useState} from 'react';
-import { BASE_URL, api } from "../../../api"
-
+import { BASE_URL, api } from "../../../api";
 
 import './CarsCollection.css'
 import React from 'react';
@@ -34,9 +33,7 @@ function CarsCollection (props){
                     <p>espaço reservado futuramente para as imagens</p>
                 </div>
                 <div className='carInfo'>
-
                     <table>
-
                         <tr>
                             {car.name}
                         </tr>

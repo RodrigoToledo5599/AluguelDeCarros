@@ -46,7 +46,6 @@
 .alugarButton:hover{
     background-color: #fda172;
     transition-duration: 0.4s;
-    transform:rotate(-0.06125turn);
-    transition-duration: 0.5s;
+    
 
 }
