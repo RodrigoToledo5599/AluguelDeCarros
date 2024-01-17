@@ -34,6 +34,7 @@ namespace AluguelDeCarros.Controllers
 
             var user = new Usuario
             {
+                RealName = model.Name,
                 UserName = model.Email,
                 Email = model.Email,
                 EmailConfirmed = true
@@ -71,8 +72,9 @@ namespace AluguelDeCarros.Controllers
                 
                 var tokenService = new TokenService(_configuration);
                 var token = tokenService.GenerateToken(model.Email.ToString() ,model.Password.ToString());
-                //var usuarioToken = tokenService.GenerateUsuarioToken();
-                return Ok(token);
+                var usuarioToken = tokenService.GenerateUsuarioToken();
+               
+                return Ok();
             }
             
             
