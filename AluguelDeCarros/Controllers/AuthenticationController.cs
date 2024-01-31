@@ -66,15 +66,16 @@ namespace AluguelDeCarros.Controllers
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password,false,false);
 
             if (!result.Succeeded)
-                return StatusCode(401,"Senha ou email estão errado(s) o sua mula");
+                return StatusCode(401,"Senha e/ou email estão errado(s) o sua mula");
             else
             {
-                
+                /*
                 var tokenService = new TokenService(_configuration);
                 var token = tokenService.GenerateToken(model.Email.ToString() ,model.Password.ToString());
                 var usuarioToken = tokenService.GenerateUsuarioToken();
-               
-                return Ok();
+               */
+
+                return Ok("nice mano");
             }
             
             
