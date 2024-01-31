@@ -1,6 +1,6 @@
 import Header from '../../app/components/Header/Header';
 import {BASE_URL, api} from '../../api';
-import {useState} from 'react';
+import React,{useState} from 'react';
 import { FormEvent } from 'react'
 
 import './create-user.css';
@@ -17,24 +17,29 @@ export default function CreateUser(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+
+
+
     const formData = {
         "email": email,
         "name": name,
         "password": password
     }
 
-    const formData2 = {
-        "email": "machoalfa@gmaiadqwwqwl.com",
-        "name": "Rodrigo Toledo ",
-        "password": "fDs1@yp"
-    }
+    // const formData2 = {
+    //     "email": "machoalfa@gmaiadqwwqwl.com",
+    //     "name": "Rodrigo Toledo ",
+    //     "password": "fDs1@yp"
+    // }
+
+
 
     const submitForm = async(e) => {
         e.preventDefault();
         const response = await fetch(url, {
             method:'POST',
             headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(formData2)
+            body: JSON.stringify(formData)
         });
     }
         
