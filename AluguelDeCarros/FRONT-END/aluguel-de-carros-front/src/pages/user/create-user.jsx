@@ -9,6 +9,22 @@ import { request } from 'http';
 //https://localhost:7136/api/Authentication/register
 
 
+// function changeBorderColor() {
+
+//     var nameInput = document.getElementById('nameInput');
+//     nameInput.addEventListener('click', function() {
+//         nameInput.style.border = '1px solid #ccc';
+        
+//       });
+//     inputField.style.border = '1px solid #007bff';
+
+
+
+//     var inputField = document.getElementById('myInput');
+// }
+
+
+
 export default function CreateUser(){
     const url = BASE_URL+'api/Authentication/register';
     
@@ -34,6 +50,7 @@ export default function CreateUser(){
 
 
 
+
     const submitForm = async(e) => {
         e.preventDefault();
         const response = await fetch(url, {
@@ -49,8 +66,10 @@ export default function CreateUser(){
         <>
         <div className="formzao">
             <form className="form-itself" onSubmit={submitForm}>
-
-                <input id="email" name="email" placeholder="Email"  onChange={(e) => setEmail(e.target.value)} /> <br /><br />
+                <h3>Create Account</h3>
+                <br />
+                
+                <input id="email" name="email" placeholder="E-mail"  onChange={(e) => setEmail(e.target.value)} /> <br /><br />
 
                 <input id="name" name="name" placeholder="Nome"  onChange={(e) => setName(e.target.value)}/> <br /><br />
                 
@@ -60,7 +79,7 @@ export default function CreateUser(){
                 <button type="submit" >Enviar</button>
         
             </form>
-            <div className="ocupando-espaço"></div>
+
         </div>
         </>
     )

@@ -1,21 +1,47 @@
+body{
+    background-color: #fda172;
+}
+
 .formzao{
     width:100%;
     display:flex;
     flex-direction: column;
-    border: solid 2px black;
-    
+    align-items: center;
+    background-color: #fda172;
 }
 .form-itself{
-    border-radius: 10px;
-    width:35%;
-    margin-left: 15%;
+    width:30%;
     margin-top: 5%;
     margin-bottom: 5%;
-    background-color: gray;
+    
+    box-shadow: 2px 2px 2px black;
     padding: 30px;
+    background-color: white;
 
 }
 
-.ocupando-espaço{
+.form-itself h3{
+    font-family: Sans-serif;
+}
 
+
+input{
+    padding:1vh;
+    width:90%;
+    border: solid 1px;
+    border-radius: 3px;
+}
+
+button{
+    padding:1vh;
+    background-color: #fda172;
+    border: solid 1px white;
+    border-radius: 3px;
+
+}
+
+button:hover{
+    border: solid 1px black;
+    cursor: pointer;
+    transition-duration: 0.4s;
 }

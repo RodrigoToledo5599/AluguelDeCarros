@@ -71,6 +71,8 @@ namespace AluguelDeCarros.Controllers
             return Ok(CarrosRemap);
         }
 
+
+
         [HttpGet("ReturnCarById")]
         public async Task<IActionResult> GetCarById(int id) 
         {
