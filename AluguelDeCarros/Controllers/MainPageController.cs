@@ -1,13 +1,8 @@
-﻿using AluguelDeCarros.Data.Context;
-using AluguelDeCarros.Data.DTO.Carros;
-using AluguelDeCarros.Data.Repo;
+﻿using AluguelDeCarros.Data.DTO.Carros;
 using AluguelDeCarros.Data.Repo.IRepo;
 using AluguelDeCarros.Models;
 using AutoMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Extensions;
 
 namespace AluguelDeCarros.Controllers
 {
@@ -18,10 +13,12 @@ namespace AluguelDeCarros.Controllers
     {
         public readonly IUnitOfWork _db;
         private readonly IMapper _mapper;
+
         public MainPageController(IUnitOfWork db, IMapper mapper)
         {
             _db = db;
             _mapper = mapper;
+            
         }
 
 
@@ -34,8 +31,6 @@ namespace AluguelDeCarros.Controllers
         public async Task<IActionResult> ListCars()
         {
             var listaDeCarros = await _db.Carros.GetAll();
-            
-
             List<CarrosDto> CarrosRemap = new List<CarrosDto>();
 
             foreach (var car in listaDeCarros)
@@ -48,9 +43,8 @@ namespace AluguelDeCarros.Controllers
                 CarrosRemap.Add(carroRemapAtual);
 
             }
+
             return Ok(CarrosRemap);
-            
-            
         }
         
         [HttpGet("GetSomeOfTheCars")]
@@ -74,40 +68,23 @@ namespace AluguelDeCarros.Controllers
 
 
         [HttpGet("ReturnCarById")]
-        public async Task<IActionResult> GetCarById(int id) 
+        public async Task<IActionResult> GetCarById(int id)     
         {
-            Carros carro  = new Carros();
-            CarrosDto result = new CarrosDto();
-            int idNumber = 0;
-            try
+            Carros? carro  = new Carros();
+            CarrosDto? result = new CarrosDto();
+            
+            carro = await _db.Carros.GetById(c => c.Id == id);
+            
+            if(carro != null)
             {
-                carro = await _db.Carros.GetById(c => c.Id == id);
                 result = _mapper.Map<CarrosDto>(carro);
+                return Ok(result);
             }
-            catch (Exception ex)
+            else
             {
                 return BadRequest("Esse carro nao existe");
             }
 
-            idNumber = carro.Id;
-            
-            DmMarcas marca = new DmMarcas();
-
-
-            // nao sei pq mas o meu banco ainda nao deixou a categoria de marcas na table de carros como nao nullable, entao por enquanto essa validação abaixo nao serve pra nada.
-            try
-            {
-                marca = await _db.Marcas.getMarcaFromCarro(idNumber);
-                result.Marca = marca.Marca.ToString();
-            }
-            catch (Exception ex)
-            {
-                result.Marca = "";
-            }
-            
-            return Ok(result);
-        
-        
         }
     }
 }

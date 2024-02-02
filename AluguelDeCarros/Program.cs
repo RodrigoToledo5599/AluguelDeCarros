@@ -3,11 +3,13 @@ using AluguelDeCarros.Data.Context;
 using AluguelDeCarros.Data.Repo;
 using AluguelDeCarros.Data.Repo.IRepo;
 using AluguelDeCarros.Models;
+using AluguelDeCarros.Services.RemapingServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using AluguelDeCarros.Models;
 
 namespace AluguelDeCarros
 {
@@ -30,6 +32,7 @@ namespace AluguelDeCarros
                 options.UseSqlServer(connectionString));
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
 
 
             builder.Services.AddIdentity<Usuario, IdentityRole>()

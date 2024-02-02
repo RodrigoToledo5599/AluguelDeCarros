@@ -1,28 +1,47 @@
 'use client'
 import {useEffect,useState} from 'react';
 import { BASE_URL, api } from "../../../api";
-
 import './CarsCollection.css'
 import React from 'react';
 
 
 
 
-function CarsCollection (props){
-    var comeco;
-    var fim;
-    var {comeco , fim} = props
-
-
-    const url = BASE_URL+'api/MainPage/GetSomeOfTheCars?inicio='+`${comeco}`+'&fim='+`${fim}`;
+function CarsCollection (){
+    
+    const passo = 5;
+    const [begin, setBegin] = useState(0);
+    const [end, setEnd] = useState(passo);
+    
+    const url = BASE_URL+'api/MainPage/GetSomeOfTheCars?inicio='+`${begin}`+'&fim='+`${end}`;
     const [cars,setCars] = useState([]);
-
+    
+    
+    
     useEffect(()=>{
         api.get(url)
-            .then(response =>{
-                setCars(response.data)
-            })    
+        .then(response =>{
+            setCars(response.data)
+        })    
     },[]);
+    
+
+    function decreasePage (){
+        if(begin == 0){
+          passo == passo;
+        }
+        else{
+          window.location.reload();
+          setBegin(begin - passo);
+          setEnd(end - passo);
+        }
+      }
+    
+      function increasePage(){
+        window.location.reload();
+        setBegin(begin + passo);
+        setEnd(end + passo);
+      }
 
 
     return(
@@ -52,9 +71,12 @@ function CarsCollection (props){
                         </tr>
                     </table>
                 </div>
-                
             </div>
         ))}
+        {begin} <br />
+        {end}
+        <button onClick={decreasePage}>voltar</button><br />
+        <button onClick={increasePage}>prosseguir</button>
         </>
     )
 }

@@ -8,7 +8,7 @@ namespace AluguelDeCarros.Data.DTO.Carros
     public class CarrosDto
     {
 
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Name { get; set; }
         [NotMapped]
 
