@@ -27,6 +27,10 @@
     margin-left: 15px;
     height: 135px;
     width: 20%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2.4%;
 }
 
 

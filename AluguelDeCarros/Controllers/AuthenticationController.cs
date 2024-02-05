@@ -60,8 +60,6 @@ namespace AluguelDeCarros.Controllers
             {
                 return BadRequest(ModelState.Values.SelectMany(e => e.Errors));
             }
-
-
             
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password,false,false);
 
@@ -82,6 +80,6 @@ namespace AluguelDeCarros.Controllers
 
         }
 
-
+         
     }
 }

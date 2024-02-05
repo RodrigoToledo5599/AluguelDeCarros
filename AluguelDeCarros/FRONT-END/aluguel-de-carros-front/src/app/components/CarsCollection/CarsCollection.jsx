@@ -3,17 +3,18 @@ import {useEffect,useState} from 'react';
 import { BASE_URL, api } from "../../../api";
 import './CarsCollection.css'
 import React from 'react';
+import Cookies from 'universal-cookie';
 
 
 
 
 function CarsCollection (){
-    
-    const passo = 5;
-    const [begin, setBegin] = useState(0);
-    const [end, setEnd] = useState(passo);
-    
-    const url = BASE_URL+'api/MainPage/GetSomeOfTheCars?inicio='+`${begin}`+'&fim='+`${end}`;
+    const cookies = new Cookies();
+    // var begin;
+    // var end;
+    // var {begin,end} = props;
+
+    const url = BASE_URL+'api/MainPage/GetSomeOfTheCars?inicio='+`${cookies.get('begin')}`+'&fim='+`${cookies.get('end')}`;
     const [cars,setCars] = useState([]);
     
     
@@ -24,24 +25,6 @@ function CarsCollection (){
             setCars(response.data)
         })    
     },[]);
-    
-
-    function decreasePage (){
-        if(begin == 0){
-          passo == passo;
-        }
-        else{
-          window.location.reload();
-          setBegin(begin - passo);
-          setEnd(end - passo);
-        }
-      }
-    
-      function increasePage(){
-        window.location.reload();
-        setBegin(begin + passo);
-        setEnd(end + passo);
-      }
 
 
     return(
@@ -73,10 +56,8 @@ function CarsCollection (){
                 </div>
             </div>
         ))}
-        {begin} <br />
-        {end}
-        <button onClick={decreasePage}>voltar</button><br />
-        <button onClick={increasePage}>prosseguir</button>
+        {cookies.get('begin')}<br></br>
+        {cookies.get('end')}
         </>
     )
 }
