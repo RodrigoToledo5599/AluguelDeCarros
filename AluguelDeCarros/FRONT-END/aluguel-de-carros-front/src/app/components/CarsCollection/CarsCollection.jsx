@@ -10,20 +10,37 @@ import Cookies from 'universal-cookie';
 
 function CarsCollection (){
     const cookies = new Cookies();
-    // var begin;
-    // var end;
-    // var {begin,end} = props;
 
-    const url = BASE_URL+'api/MainPage/GetSomeOfTheCars?inicio='+`${cookies.get('begin')}`+'&fim='+`${cookies.get('end')}`;
+    var passo = 5;
     const [cars,setCars] = useState([]);
+    const [begin, setBegin] = useState(0);
+    const [end, setEnd] = useState(begin + passo);
+    const url = BASE_URL+'api/MainPage/GetSomeOfTheCars?inicio='+`${begin}`+'&fim='+`${end}`;
     
+    function decreasePage (){
+        if(begin <= 0){}
+        else{
+          setBegin(begin - passo);
+          setEnd(end - passo);
+          // cookies.set("begin",begin);
+        }
+      }
     
+      function increasePage(){
+        setBegin(begin + passo);
+        setEnd(end + passo);
+        // cookies.set("end",end);
+      }
     
     useEffect(()=>{
         api.get(url)
         .then(response =>{
             setCars(response.data)
-        })    
+        })
+        
+
+
+
     },[]);
 
 
@@ -56,8 +73,12 @@ function CarsCollection (){
                 </div>
             </div>
         ))}
-        {cookies.get('begin')}<br></br>
-        {cookies.get('end')}
+
+        <p>
+        {begin}<br/>{end}
+        </p>
+        <button onClick={decreasePage}>voltar</button><br />
+        <button onClick={increasePage}>prosseguir</button>
         </>
     )
 }

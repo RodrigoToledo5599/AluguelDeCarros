@@ -13,32 +13,6 @@ import { Cookie } from 'next/font/google';
 export default function Home() {
 
   const cookies = new Cookies();
-  
-  var passo = 5;
-  const [begin, setBegin] = useState(0);
-  const [end, setEnd] = useState(begin + passo);
-
-  // cookies.set("begin",begin);
-  // cookies.set("end",end);
-
-  function decreasePage (){
-    if(begin < 0){
-      setBegin(0);
-    }
-    else{
-      setBegin(begin - passo);
-      setEnd(end - passo);
-      cookies.set("begin",begin);
-      window.location.reload();
-    }
-  }
-
-  function increasePage(){
-    setBegin(begin + passo);
-    setEnd(end + passo);
-    cookies.set("end",end);
-    window.location.reload();
-  }
 
 
 
@@ -48,8 +22,6 @@ export default function Home() {
       <Header></Header>
         <div className='page-Content'>
           <CarsCollection></CarsCollection>
-          <button onClick={decreasePage}>voltar</button><br />
-          <button onClick={increasePage}>prosseguir</button>
         </div>
     </body>
     
