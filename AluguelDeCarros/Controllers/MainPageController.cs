@@ -2,6 +2,7 @@
 using AluguelDeCarros.Data.Repo.IRepo;
 using AluguelDeCarros.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AluguelDeCarros.Controllers
@@ -26,7 +27,9 @@ namespace AluguelDeCarros.Controllers
         /// Retorna todos os Carros
         /// </summary>
         /// <returns></returns>
+         
         //[Authorize(AuthenticationSchemes ="Bearer")]
+        //[Authorize]
         [HttpGet("GetAllCars")]
         public async Task<IActionResult> ListCars()
         {
@@ -46,7 +49,7 @@ namespace AluguelDeCarros.Controllers
 
             return Ok(CarrosRemap);
         }
-        
+
         [HttpGet("GetSomeOfTheCars")]
         public async Task<IActionResult> ListCars(int inicio, int fim)
         {

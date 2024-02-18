@@ -32,14 +32,16 @@ namespace AluguelDeCarros
                 options.UseSqlServer(connectionString));
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-            
-
-
             builder.Services.AddIdentity<Usuario, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
-            /*
-             */
+
+            builder.Services.AddAuthorization();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+            
+            
+            /* 
             builder.Services.AddAuthentication(
                 JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -54,6 +56,7 @@ namespace AluguelDeCarros
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(builder.Configuration["Jwt:key"]))
                 });
+             */
 
 
 

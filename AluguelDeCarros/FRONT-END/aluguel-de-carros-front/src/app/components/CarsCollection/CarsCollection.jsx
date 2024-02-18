@@ -9,44 +9,42 @@ import Cookies from 'universal-cookie';
 
 
 function CarsCollection (){
+
+    const url = BASE_URL+'api/MainPage/GetAllCars';
     const cookies = new Cookies();
 
-    var passo = 5;
+    const passo = 8;
+    const [begin,setBegin] = useState(0);
+    const [end,setEnd] = useState(begin + passo);
     const [cars,setCars] = useState([]);
-    const [begin, setBegin] = useState(0);
-    const [end, setEnd] = useState(begin + passo);
-    const url = BASE_URL+'api/MainPage/GetSomeOfTheCars?inicio='+`${begin}`+'&fim='+`${end}`;
     
     function decreasePage (){
-        if(begin <= 0){}
-        else{
-          setBegin(begin - passo);
-          setEnd(end - passo);
-          // cookies.set("begin",begin);
+        if(begin > 0)
+        {
+            
+            setBegin(begin - passo);
+            setEnd(end - passo);
         }
-      }
+    }
     
-      function increasePage(){
+    function increasePage(){
+        
         setBegin(begin + passo);
         setEnd(end + passo);
-        // cookies.set("end",end);
-      }
+    }
     
     useEffect(()=>{
         api.get(url)
         .then(response =>{
             setCars(response.data)
+            // setCars(response.data.slice(begin,end))
         })
-        
-
-
 
     },[]);
 
-
     return(
         <>
-        {cars.map( car =>(
+        {cars.map(car =>(
             <div key={car.id} className='carIcon'>
                 <div className='pictureSpace'>
                     <p>espaço reservado futuramente para as imagens</p>
@@ -56,7 +54,6 @@ function CarsCollection (){
                         <tr>
                             {car.name}
                         </tr>
-
                         <tr>
                             {car.marca}
                         </tr>
@@ -67,18 +64,15 @@ function CarsCollection (){
                             <button className='alugarButton'>
                                 <h1>ALUGAR</h1>
                             </button>
-
                         </tr>
                     </table>
                 </div>
             </div>
         ))}
 
-        <p>
-        {begin}<br/>{end}
-        </p>
-        <button onClick={decreasePage}>voltar</button><br />
-        <button onClick={increasePage}>prosseguir</button>
+        
+        {/* <button onClick={increasePage}>prosseguir</button>
+        <button onClick={decreasePage}>voltar</button><br /> */}
         </>
     )
 }

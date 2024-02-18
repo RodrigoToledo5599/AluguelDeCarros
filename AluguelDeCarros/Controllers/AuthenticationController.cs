@@ -4,7 +4,7 @@ using AluguelDeCarros.Models;
 using AluguelDeCarros.Services.Token;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;   
 
 namespace AluguelDeCarros.Controllers
 {
@@ -61,7 +61,7 @@ namespace AluguelDeCarros.Controllers
                 return BadRequest(ModelState.Values.SelectMany(e => e.Errors));
             }
             
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password,false,false);
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password,true,false);
 
             if (!result.Succeeded)
                 return StatusCode(401,"Senha e/ou email estão errado(s) o sua mula");
