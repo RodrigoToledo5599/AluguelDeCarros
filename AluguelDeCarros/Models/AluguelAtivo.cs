@@ -32,6 +32,6 @@ namespace AluguelDeCarros.Models
         public DateTime DataDeEntrega { get; set; }
 
         public bool Finalizado { get; set; }
-
+        
     }
 }
