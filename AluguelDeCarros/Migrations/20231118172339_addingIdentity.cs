@@ -197,7 +197,7 @@ namespace AluguelDeCarros.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AluguelAtivos",
+                name: "Aluguels",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -210,15 +210,15 @@ namespace AluguelDeCarros.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AluguelAtivos", x => x.Id);
+                    table.PrimaryKey("PK_Aluguels", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AluguelAtivos_AspNetUsers_UsuarioId",
+                        name: "FK_Aluguels_AspNetUsers_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AluguelAtivos_Carros_CarroId",
+                        name: "FK_Aluguels_Carros_CarroId",
                         column: x => x.CarroId,
                         principalTable: "Carros",
                         principalColumn: "Id",
@@ -268,13 +268,13 @@ namespace AluguelDeCarros.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AluguelAtivos_CarroId",
-                table: "AluguelAtivos",
+                name: "IX_Aluguels_CarroId",
+                table: "Aluguels",
                 column: "CarroId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AluguelAtivos_UsuarioId",
-                table: "AluguelAtivos",
+                name: "IX_Aluguels_UsuarioId",
+                table: "Aluguels",
                 column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
@@ -330,7 +330,7 @@ namespace AluguelDeCarros.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AluguelAtivos");
+                name: "Aluguels");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");

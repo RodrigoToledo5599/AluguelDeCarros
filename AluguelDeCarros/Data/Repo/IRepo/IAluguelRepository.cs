@@ -4,7 +4,7 @@ namespace AluguelDeCarros.Data.Repo.IRepo
 {
     public interface IAluguelRepository
     {
-        public Task<AluguelAtivo> Alugar(AluguelAtivo aluguel);
+        public Task<Aluguel> Alugar(Aluguel aluguel);
 
     }
 }

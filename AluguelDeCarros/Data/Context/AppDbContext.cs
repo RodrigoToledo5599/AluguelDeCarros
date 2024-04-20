@@ -10,7 +10,7 @@ namespace AluguelDeCarros.Data.Context
 
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Carros> Carros { get; set; }
-        public DbSet<AluguelAtivo> AluguelAtivos { get; set; }
+        public DbSet<Aluguel> Aluguel { get; set; }
         public DbSet<DmMarcas> DmMarcas { get; set; }
 
 

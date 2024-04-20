@@ -24,7 +24,7 @@ namespace AluguelDeCarros.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("AluguelDeCarros.Models.AluguelAtivo", b =>
+            modelBuilder.Entity("AluguelDeCarros.Models.Aluguel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,7 +54,7 @@ namespace AluguelDeCarros.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("AluguelAtivos");
+                    b.ToTable("Aluguels");
                 });
 
             modelBuilder.Entity("AluguelDeCarros.Models.Carros", b =>
@@ -519,7 +519,7 @@ namespace AluguelDeCarros.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("AluguelDeCarros.Models.AluguelAtivo", b =>
+            modelBuilder.Entity("AluguelDeCarros.Models.Aluguel", b =>
                 {
                     b.HasOne("AluguelDeCarros.Models.Carros", "Carros")
                         .WithMany()

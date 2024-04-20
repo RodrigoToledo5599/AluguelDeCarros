@@ -14,7 +14,7 @@ namespace AluguelDeCarros.Controllers
     {
         public readonly IUnitOfWork _db;
         private readonly IMapper _mapper;
-
+        
         public MainPageController(IUnitOfWork db, IMapper mapper)
         {
             _db = db;
@@ -27,7 +27,7 @@ namespace AluguelDeCarros.Controllers
         /// Retorna todos os Carros
         /// </summary>
         /// <returns></returns>
-         
+
         //[Authorize(AuthenticationSchemes ="Bearer")]
         //[Authorize]
         [HttpGet("GetAllCars")]

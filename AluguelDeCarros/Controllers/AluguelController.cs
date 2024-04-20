@@ -20,7 +20,7 @@ namespace AluguelDeCarros.Controllers
         [HttpPost("AlugarCarro")]
         public async Task<IActionResult> AlugarCarro (int CarroId, string UsuarioId, int valor, int valorDiarioDoCarro)
         {
-            AluguelAtivo aluguel = new AluguelAtivo();
+            Aluguel aluguel = new Aluguel();
 
             int diasDeAluguel = (int)(valor / valorDiarioDoCarro);
 

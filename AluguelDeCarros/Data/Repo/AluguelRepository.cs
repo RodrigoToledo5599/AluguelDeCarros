@@ -4,7 +4,7 @@ using AluguelDeCarros.Models;
 
 namespace AluguelDeCarros.Data.Repo
 {
-    public class AluguelRepository : Repository<AluguelAtivo>, IAluguelRepository
+    public class AluguelRepository : Repository<Aluguel>, IAluguelRepository
     {
         private readonly AppDbContext _db;
         public AluguelRepository(AppDbContext db) : base(db) 
@@ -15,9 +15,9 @@ namespace AluguelDeCarros.Data.Repo
         
 
         
-        public async Task<AluguelAtivo> Alugar(AluguelAtivo aluguel)
+        public async Task<Aluguel> Alugar(Aluguel aluguel)
         {
-            _db.AluguelAtivos.Add(aluguel);
+            _db.Aluguel.Add(aluguel);
             _db.SaveChanges();
 
             return aluguel;

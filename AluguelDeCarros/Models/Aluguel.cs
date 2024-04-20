@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AluguelDeCarros.Models
 {
-    public class AluguelAtivo
+    public class Aluguel
     {
         [Key]
         public int Id { get; set; }
