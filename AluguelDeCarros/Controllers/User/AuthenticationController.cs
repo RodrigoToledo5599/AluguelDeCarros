@@ -19,7 +19,6 @@ namespace AluguelDeCarros.Controllers.User
             _userServices = userServices;
         }
 
-
         [HttpPost("login")]
         public async Task<IActionResult> Login(UsuarioSignInDTO model)
         {
@@ -35,7 +34,7 @@ namespace AluguelDeCarros.Controllers.User
 
         }
 
-
+        
 
 
     }

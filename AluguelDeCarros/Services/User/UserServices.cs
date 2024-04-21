@@ -14,7 +14,6 @@ namespace AluguelDeCarros.Services.User
     public class UserServices : IUserServices
     {
         private readonly SignInManager<Usuario> _signInManager;
-
         private readonly IConfiguration _config;
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<Usuario> _userManager;
@@ -40,11 +39,12 @@ namespace AluguelDeCarros.Services.User
                 Email = model.Email,
                 EmailConfirmed = true
             };
-            string senha = model.Password;
-            var result = await _unitOfWork.User.CreateUser(user, senha);
+            //var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _unitOfWork.User.CreateUser(user, model.Password);
             return result;
+            
         }
-
+        
         public async Task<string> LoggingUser(UsuarioSignInDTO model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
@@ -53,7 +53,6 @@ namespace AluguelDeCarros.Services.User
             return _GenerateTokenString(model);
             
         }
-
 
         public async Task<bool> DeleteUser(UsuarioDTO model)
         {
@@ -98,6 +97,8 @@ namespace AluguelDeCarros.Services.User
             string tokenString = new JwtSecurityTokenHandler().WriteToken(securityToken);
             return tokenString;
         }
+        
+        
     }
 
 

@@ -1,4 +1,5 @@
-﻿using AluguelDeCarros.Models;
+﻿using AluguelDeCarros.Data.DTO.Usuario;
+using AluguelDeCarros.Models;
 
 namespace AluguelDeCarros.Data.Repo.IRepo
 {

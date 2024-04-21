@@ -27,7 +27,6 @@ namespace AluguelDeCarros.Controllers.User
             return result;
         }
 
-
         [HttpDelete("deleteUser")]
         public async Task<IActionResult> DeleteUser([FromBody] UsuarioDTO model)
         {
@@ -47,6 +46,6 @@ namespace AluguelDeCarros.Controllers.User
             return Ok(result);
         }
 
-
+        
     }
 }

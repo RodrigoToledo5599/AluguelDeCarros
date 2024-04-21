@@ -40,6 +40,7 @@ namespace AluguelDeCarros
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            builder.Services.AddMvc();
 
             builder.Services.AddAuthentication(options =>
             {

@@ -14,13 +14,14 @@ namespace AluguelDeCarros.Data.Repo
         public IAluguelRepository Aluguel { get; private set; }
         public IUserRepository User { get; private set; }
 
-        public UnitOfWork(AppDbContext db)
+        public UnitOfWork(AppDbContext db,UserManager<Usuario> userManager)
         {
             _db = db;
+            _userManager = userManager;
             this.Carros = new CarrosRepository(_db);
             this.Marcas = new MarcasRepository(_db);
             this.Aluguel = new AluguelRepository(_db);
-            this.User = new UserRepository(_userManager, _db);
+            this.User = new UserRepository(_userManager,_db);
         }
 
     }

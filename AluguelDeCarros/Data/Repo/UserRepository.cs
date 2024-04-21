@@ -2,6 +2,14 @@
 using AluguelDeCarros.Data.Repo.IRepo;
 using AluguelDeCarros.Models;
 using Microsoft.AspNetCore.Identity;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using AluguelDeCarros.Data.DTO.Usuario;
+
+using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AluguelDeCarros.Data.Repo
 {
