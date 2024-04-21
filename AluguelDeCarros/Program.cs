@@ -31,19 +31,35 @@ namespace AluguelDeCarros
                 options.UseSqlServer(connectionString));
             
             
-            //UTILS ------------------------------------------------------------------------------------------------------------------
+            //SERVICES ------------------------------------------------------------------------------------------------------------------
             builder.Services.AddScoped<IUserServices, UserServices>();
-            //------------------------------------------------------------------------------------------------------------------------
-
-
-
-
+            // --------------------------------------------------------------------------------------------------------------------------
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddIdentity<Usuario, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
-             
+
+
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateActor = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    RequireExpirationTime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = builder.Configuration.GetSection("Jwt:Issuer").Value,
+                    ValidAudience = builder.Configuration.GetSection("Jwt:Audience").Value,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("Jwt:Key").Value))
+                };
+            });
+
             builder.Services.AddAuthorization();
             builder.Services.AddEndpointsApiExplorer();
 

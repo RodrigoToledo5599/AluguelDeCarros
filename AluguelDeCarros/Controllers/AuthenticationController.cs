@@ -42,12 +42,11 @@ namespace AluguelDeCarros.Controllers
             {
                 return BadRequest(ModelState.Values.SelectMany(e => e.Errors));
             }
-            bool loginResult = await _userServices.LoggingUser(model);
-            var result = loginResult == true ? StatusCode(200, "Usuario logado") : StatusCode(401, "Não authorizado"); 
-            return result;
 
+            string loginResult = await _userServices.LoggingUser(model);
+            //var result = loginResult == true ? StatusCode(200, "Usuario logado") : StatusCode(401, "Não authorizado");
 
-
+            return Ok(loginResult);
 
         }
 
