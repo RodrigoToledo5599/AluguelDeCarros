@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using AluguelDeCarros.Services.User;
 
 
-namespace AluguelDeCarros.Controllers
+namespace AluguelDeCarros.Controllers.User
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -19,21 +19,6 @@ namespace AluguelDeCarros.Controllers
             _userServices = userServices;
         }
 
-
-
-
-        [HttpPost("register")]
-        public async Task<IActionResult> RegisterUser( [FromBody] UsuarioDTO model)
-        {
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState.Values.SelectMany(e => e.Errors));
-            }
-            bool registerResult = await _userServices.RegisterUser(model);
-            var result = registerResult == true ? StatusCode(200, "Usuario criado") : StatusCode(400, "Bad Request (Senha fraca)");
-            return result;
-
-        }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(UsuarioSignInDTO model)
@@ -52,6 +37,6 @@ namespace AluguelDeCarros.Controllers
 
 
 
-         
+
     }
 }

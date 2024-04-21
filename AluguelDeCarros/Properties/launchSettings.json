@@ -11,8 +11,8 @@
   "profiles": {
     "AluguelDeCarros": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": false,
+      "dotnetRunMessages": true,
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7136;http://localhost:5262",
       "environmentVariables": {
@@ -29,3 +29,6 @@
     }
   }
 }
+
+// endereço do swagger VVVVVVVVVVVVVV
+// https://localhost:7136/swagger/index.html

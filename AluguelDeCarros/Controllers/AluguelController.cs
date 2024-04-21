@@ -1,6 +1,7 @@
 ﻿using AluguelDeCarros.Data.Context;
 using AluguelDeCarros.Data.Repo.IRepo;
 using AluguelDeCarros.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AluguelDeCarros.Controllers
@@ -16,8 +17,8 @@ namespace AluguelDeCarros.Controllers
         {
             _db = db;
         }
-
         [HttpPost("AlugarCarro")]
+        [Authorize]
         public async Task<IActionResult> AlugarCarro (int CarroId, string UsuarioId, int valor, int valorDiarioDoCarro)
         {
             Aluguel aluguel = new Aluguel();

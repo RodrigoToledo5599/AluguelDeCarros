@@ -8,6 +8,7 @@ namespace AluguelDeCarros.Data.Repo.IRepo
         ICarrosRepository Carros { get; }
         IMarcasRepository Marcas { get; }
         IAluguelRepository Aluguel { get; }
+        IUserRepository User { get; }
 
 
 
