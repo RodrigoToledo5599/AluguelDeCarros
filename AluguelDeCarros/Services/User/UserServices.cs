@@ -2,17 +2,16 @@
 using AluguelDeCarros.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 
-namespace AluguelDeCarros.Utils.User
+namespace AluguelDeCarros.Services.User
 {
-    public class UserUtils : IUserUtils
+    public class UserServices : IUserServices
     {
         private readonly SignInManager<Usuario> _signInManager;
         private readonly UserManager<Usuario> _userManager;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
-        public UserUtils(UserManager<Usuario> userManager, 
+        public UserServices(UserManager<Usuario> userManager,
                          SignInManager<Usuario> signInManager,
                          IConfiguration configuration,
                          IMapper mapper)
@@ -22,7 +21,7 @@ namespace AluguelDeCarros.Utils.User
             _configuration = configuration;
             _mapper = mapper;
         }
-        
+
         public async Task<bool> RegisterUser(UsuarioDTO model)
         {
             var user = new Usuario
@@ -33,14 +32,13 @@ namespace AluguelDeCarros.Utils.User
                 EmailConfirmed = true
             };
             var result = await _userManager.CreateAsync(user, model.Password);
-            
             return result.Succeeded;
         }
 
         public async Task<bool> LoggingUser(UsuarioSignInDTO model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user is null) 
+            if (user is null)
                 return false;
             return await _userManager.CheckPasswordAsync(user, model.Password);
         }
@@ -49,18 +47,11 @@ namespace AluguelDeCarros.Utils.User
 
 
 
-
-
-
-
-
-
-
-    public interface IUserUtils {
+    public interface IUserServices
+    {
         public Task<bool> RegisterUser(UsuarioDTO model);
         public Task<bool> LoggingUser(UsuarioSignInDTO model);
 
 
     }
-
 }

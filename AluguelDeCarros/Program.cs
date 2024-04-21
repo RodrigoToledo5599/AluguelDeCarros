@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using AluguelDeCarros.Utils.User;
+using AluguelDeCarros.Services.User;
 
 namespace AluguelDeCarros
 {
@@ -32,7 +32,7 @@ namespace AluguelDeCarros
             
             
             //UTILS ------------------------------------------------------------------------------------------------------------------
-            builder.Services.AddScoped<IUserUtils, UserUtils>();
+            builder.Services.AddScoped<IUserServices, UserServices>();
             //------------------------------------------------------------------------------------------------------------------------
 
 

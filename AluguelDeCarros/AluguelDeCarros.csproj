@@ -42,7 +42,7 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Middleware\" />
-    <Folder Include="Services\" />
+    <Folder Include="Utils\User\" />
   </ItemGroup>
 
 </Project>
