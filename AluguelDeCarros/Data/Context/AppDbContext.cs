@@ -19,7 +19,10 @@ namespace AluguelDeCarros.Data.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            
+            builder.Entity<Usuario>().HasData(
+                new Usuario { Id = new Guid().ToString(), RealName="Rogerio Souza"}
+                
+                );
 
             builder.Entity<DmMarcas>().HasData(
 
